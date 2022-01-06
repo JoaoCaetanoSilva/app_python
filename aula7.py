@@ -1,28 +1,18 @@
-texto = (input('Texto: '))
-encontrar = (input('Palavra: '))
-lista = texto.split()
+codigo = input('Codificar: ')
 
-if encontrar in lista:
-    print(lista)
-    print('Esta na lista!')
+a = 1
+b = 2
+c = 3
+d = 4
+e = 5
+f = 6
+g = 7
+h = 8
+i = 9
 
-    import re
-    a = encontrar
-# Obs: Deveria ser "lista" no lugar de texto...
-    b = texto
-    result = [_.start() for _ in re.finditer(a, b)]
-    print('Na posição: ' + str(result))
+lista = (a, b, c, d, e, f, g, h, i)
 
-    print('Numero de ocorrencias no texto:')
-    y = texto.count(encontrar)
-    print(y)
+if codigo in lista:
+    print(codigo)
 
-# Obs: Colocar lista e valor pedido em vermelho...
-    RED = "\033[1;31m"
-    z = (RED + encontrar)
-    print(texto and z)
-
-else:
-    RED = "\033[1;31m"
-    print(RED + '\033[1mNão está na lista!\033[0m')
 
