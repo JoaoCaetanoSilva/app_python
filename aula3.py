@@ -1,20 +1,18 @@
 a = int(input('Primeiro bimestre: '))
-if a > 10:
+while a > 10:
     a = int(input('(VOCE DIGITOU ERRADO). \nPrimeiro bimestre: '))
 b = int(input('Segundo bimestre: '))
-if b > 10:
+while b > 10:
     b = int(input('(VOCE DIGITOU ERRADO). \nSegundo bimestre: '))
 c = int(input('Terceiro bimestre: '))
-if c > 10:
+while c > 10:
     c = int(input('(VOCE DIGITOU ERRADO). \nTerceiro bimestre: '))
 d = int(input('Quarto bimestre: '))
-if d > 10:
+while d > 10:
     d = int(input('(VOCE DIGITOU ERRADO). \nQuarto bimestre: '))
 media = (a + b + c +d) / 4
 if a <= 10 and b <= 10 and c <= 10 and d <= 10:
      print('Media: {}'.format(media))
-else:
-     print('Algum valor foi digitado errado')
 
 # a = int(input('Entre com o primerio valor: '))
 # b = int(input('Entre com o primerio valor: '))
