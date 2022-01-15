@@ -13,13 +13,13 @@ class Televisao:
         if self.ligada:
             self.canal += 1
         else:
-            print('A tv esta desligada')
+            print('A tv está desligada')
 
     def diminui_canal(self):
         if self.ligada:
             self.canal -= 1
         else:
-            print('A tv esta desligada')
+            print('A tv está desligada')
 
 # televisao = Televisao()
 # print('Televisao esta ligada? \nR: {}'.format(televisao.ligada))
