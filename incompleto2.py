@@ -3,25 +3,24 @@ encontrar = (input('Palavra: '))
 lista = texto.split()
 
 if encontrar in lista:
-    print('Esta na lista!')
+    print('\nEsta na lista!')
 
-    import re
-    a = encontrar
-# Obs: Deveria ser "lista" no lugar de texto. Para a contagem correta da posicao. Tipo: 0, 1 , 2.
-    b = texto
-    result = [_.start() for _ in re.finditer(a, b)]
-    print('Na posição: ' + str(lista.index(encontrar)))
+    ocorrencias = 0
+    posicao = 0
+    posicoes = ''
+    for item in lista:
+        if item == encontrar:
+            ocorrencias += 1
+            posicoes += str(posicao) + ', '
+        posicao += 1
 
-    print('Numero de ocorrencias no texto:')
-    y = texto.count(encontrar)
-    print(y)
+    print('Na posicao:' + posicoes[0:len(posicoes)-2])
 
-# Obs: Printar texto mas com o valor pedido (encontrar) em vermelho. Tipo:(EM DESTAQUE).
+    print('Numero de ocorrencias no texto:' + str(ocorrencias) + '\n\nTexto:')
+
     RED = "\033[1;31m"
-    z = (RED + encontrar)
-    print(texto + z)
+    print(texto.replace( ' ' + encontrar, RED + ' ' + encontrar + '\033[0m'))
 
 else:
     RED = "\033[1;31m"
     print(RED + '\033[1mNão está na lista!\033[0m')
-
