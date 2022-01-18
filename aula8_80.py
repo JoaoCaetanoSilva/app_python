@@ -25,19 +25,37 @@ if mudar1 == 1:
                 lista1[index] = novo1
         print(lista1)
 
-perguntar = int(input('Deseja modificar mais alguma coisa? Se sim DIGITE 1. Se nao DIGITE 2: '))
-if perguntar == 1:
+    perguntar = int(input('Deseja modificar mais alguma coisa? Se sim DIGITE 1. Se nao DIGITE 2: '))
+    if perguntar == 1:
 # Obs: Repitir funçao, sem repetir codigo. Talvez um import...
-    print(mudar1)
+        confirmado1 = int(input('Para adicionar o nome de um novo cliente digite: 2 \nPara excluir o nome do cliente digite: 3 \nPara altera-lo digite: 4: \nOpção: '))
+
+        if confirmado1 == 2:
+            adicionar1 = input('Nome do novo cliente: ')
+            lista1.append(adicionar1)
+            print(lista1)
+
+        if confirmado1 == 3:
+            excluir1 = input('Nome que deseja excluir: ')
+            lista1.remove(excluir1)
+            print(lista1)
+
+        if confirmado1 == 4:
+            alterar1 = input('Nome que deseja alterar: ')
+            novo1 = input('Novo nome: ')
+            for index, palavra in enumerate(lista1):
+                if palavra == alterar1:
+                    lista1[index] = novo1
+            print(lista1)
 
 else:
     ...
 # Fazer um for para enquanto tiver clientes na lista, printar para o usuario: Endereço do fulano de tal.
 # Len
-endereco = input('Endereco do/a ' + lista1[0] + ': ')
+endereco = input('Endereco do: ')
 lista2 = []
 lista2.append(endereco)
-lista2 = endereco.split()
+lista2 = (endereco).split()
 
 mudar2 = int(input('Deseja adicionar o endereco de um novo cliente, exclui-lo ou altera-lo? Se sua resposta for sim. DIGITE 1. Se nao DIGITE 2: '))
 if mudar2 == 1:
@@ -93,3 +111,4 @@ if mudar3 == 1:
 
 else:
     ...
+print('Cliente: {}'.format(lista1) + lista2 + lista3)

@@ -15,6 +15,3 @@
 # print('A soma entre', n1, 'e', n2, 'é de:', z)
 
 
-
-
-
