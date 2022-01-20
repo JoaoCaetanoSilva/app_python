@@ -52,7 +52,7 @@ else:
     ...
 # Fazer um for para enquanto tiver clientes na lista, printar para o usuario: Endereço do fulano de tal.
 # Len
-endereco = input('Endereco do: ')
+endereco = input('Endereco dos clientes: ')
 lista2 = []
 lista2.append(endereco)
 lista2 = (endereco).split()
@@ -79,9 +79,32 @@ if mudar2 == 1:
                 lista2[index] = novo2
         print(lista2)
 
+    perguntar2 = int(input('Deseja modificar mais alguma coisa? Se sim DIGITE 1. Se nao DIGITE 2: '))
+    if perguntar2 == 1:
+        confirmado2 = int(input(
+            'Para adicionar o endereco de um novo cliente digite: 2 \nPara excluir o endereco do cliente digite: 3 \nPara altera-lo digite: 4: \nOpção: '))
+
+        if confirmado2 == 2:
+            adicionar2 = input('Endereco do novo cliente: ')
+            lista2.append(adicionar2)
+            print(lista2)
+
+        if confirmado2 == 3:
+            excluir2 = input('Endereco que deseja excluir: ')
+            lista2.remove(excluir2)
+            print(lista2)
+
+        if confirmado2 == 4:
+            alterar2 = input('Endereco que deseja alterar: ')
+            novo2 = input('Novo endereco: ')
+            for index, palavra in enumerate(lista2):
+                if palavra == alterar2:
+                    lista2[index] = novo2
+            print(lista2)
+
 else:
     ...
-
+print('Lembrando que seus clientes são: {}'.format(lista1))
 codigo = input('Codigo dos clientes: ')
 lista3 = []
 lista3.append(codigo)
@@ -109,6 +132,46 @@ if mudar3 == 1:
                 lista3[index] = novo3
         print(lista3)
 
+    perguntar3 = int(input('Deseja modificar mais alguma coisa? Se sim DIGITE 1. Se nao DIGITE 2: '))
+    if perguntar3 == 1:
+        confirmado3 = int(input('Para adicionar o codigo de um novo cliente digite: 2 \nPara excluir o codigo do cliente digite: 3 \nPara altera-lo digite: 4: \nOpção: '))
+
+        if confirmado3 == 2:
+            adicionar3 = input('Codigo do novo cliente: ')
+            lista3.append(adicionar3)
+            print(lista3)
+
+        if confirmado3 == 3:
+            excluir3 = input('Codigo que deseja excluir: ')
+            lista3.remove(excluir3)
+            print(lista3)
+
+        if confirmado3 == 4:
+            alterar3 = input('Codigo que deseja alterar: ')
+            novo3 = input('Novo nome: ')
+            for index, palavra in enumerate(lista3):
+                if palavra == alterar3:
+                    lista3[index] = novo3
+            print(lista3)
+
 else:
     ...
-print('Cliente: {}'.format(lista1) + lista2 + lista3)
+
+print('\nLista dos clientes:\n')
+# print('Cliente: {}'.format(lista1) + '\nEndereco dos clentes: {}'.format(lista2) + '\nCodigo dos clientes: {}'.format(lista3))
+
+ler = len(lista1)
+if ler == 1:
+    print('Cliente: {}'.format(lista1[0]) + '\nEndereco do cliente: {}'.format(lista2[0]) + '\nCodigo do cliente: {}'.format(lista3[0]))
+if ler == 2:
+    print('Cliente: {}'.format(lista1[0]) + '\nEndereco do cliente: {}'.format(lista2[0]) + '\nCodigo do cliente: {}'.format(lista3[0]) +
+          '\n\nCliente: {}'.format(lista1[1]) + '\nEndereco do cliente: {}'.format(lista2[1]) + '\nCodigo do cliente: {}'.format(lista3[1]))
+if ler == 3:
+    print('Cliente: {}'.format(lista1[0]) + '\nEndereco do cliente: {}'.format(lista2[0]) + '\nCodigo do cliente: {}'.format(lista3[0]) +
+          '\n\nCliente: {}'.format(lista1[1]) + '\nEndereco do cliente: {}'.format(lista2[1]) + '\nCodigo do cliente: {}'.format(lista3[1]) +
+          '\n\nCliente: {}'.format(lista1[2]) + '\nEndereco do cliente: {}'.format(lista2[2]) + '\nCodigo do cliente: {}'.format(lista3[2]))
+if ler == 4:
+    print('Cliente: {}'.format(lista1[0]) + '\nEndereco do cliente: {}'.format(lista2[0]) + '\nCodigo do cliente: {}'.format(lista3[0]) +
+          '\n\nCliente: {}'.format(lista1[1]) + '\nEndereco do cliente: {}'.format(lista2[1]) + '\nCodigo do cliente: {}'.format(lista3[1]) +
+          '\n\nCliente: {}'.format(lista1[2]) + '\nEndereco do cliente: {}'.format(lista2[2]) + '\nCodigo do cliente: {}'.format(lista3[2]) +
+          '\n\nCliente: {}'.format(lista1[3]) + '\nEndereco do cliente: {}'.format(lista2[3]) + '\nCodigo do cliente: {}'.format(lista3[3]))
