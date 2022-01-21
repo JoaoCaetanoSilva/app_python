@@ -21,16 +21,17 @@ class Televisao:
         else:
             print('A tv está desligada')
 
-# televisao = Televisao()
-# print('Televisao esta ligada? \nR: {}'.format(televisao.ligada))
-# televisao.power()
-# print('Televisao esta ligada? \nR: {}'.format(televisao.ligada))
-# televisao.power()
-# print('Televisao esta ligada? \nR: {}'.format(televisao.ligada))
-# televisao.power()
-#
-# print('Em que canal esta? \nR: {}'.format(televisao.canal))
-# televisao.aumenta_canal()
-# print('Em que canal esta? \nR: {}'.format(televisao.canal))
-# televisao.diminui_canal()
-# print('Em que canal esta? \nR: {}'.format(televisao.canal))
+if __name__=='__main__':
+    televisao = Televisao()
+    print('Televisao esta ligada? \nR: {}'.format(televisao.ligada))
+    televisao.power()
+    print('Televisao esta ligada? \nR: {}'.format(televisao.ligada))
+    televisao.power()
+    print('Televisao esta ligada? \nR: {}'.format(televisao.ligada))
+    televisao.power()
+
+    print('Em que canal esta? \nR: {}'.format(televisao.canal))
+    televisao.aumenta_canal()
+    print('Em que canal esta? \nR: {}'.format(televisao.canal))
+    televisao.diminui_canal()
+    print('Em que canal esta? \nR: {}'.format(televisao.canal))
