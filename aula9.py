@@ -13,6 +13,7 @@ def ler_arquivo(nome_arquivo):
     print(texto)
 
 if __name__ == '__main__':
-    # escrever_arquivo('Primeira Linha. \n')
+
+# escrever_arquivo('Primeira Linha. \n')
     # atualizar_arquivo('Segunda Linha. \n')
     # ler_arquivo('teste.txt')
