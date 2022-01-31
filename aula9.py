@@ -1,3 +1,4 @@
+# Obs: W = escrever, A = atualizar, R = ler
 def escrever_arquivo(texto):
     diretorio = 'C:/Users/Joao/PycharmProjects/teste.txt'
     arquivo = open(diretorio, 'w')
@@ -13,7 +14,9 @@ def ler_arquivo(nome_arquivo):
     print(texto)
 
 def media_notas(nome_arquivo):
-    pass
+    arquivo = open(nome_arquivo, 'r')
+    aluno_nota = arquivo.read()
+    print(aluno_nota)
 
 if __name__ == '__main__':
     media_notas('notas.txt')
