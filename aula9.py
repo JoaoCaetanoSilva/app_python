@@ -17,15 +17,22 @@ def media_notas(nome_arquivo):
     aluno_nota = arquivo.read()
     # print(aluno_nota)
     aluno_nota = aluno_nota.split('\n')
+    lista_media = []
     for x in aluno_nota:
         lista_notas = x.split(',')
         aluno = lista_notas[0]
         lista_notas.pop(0)
-        print(aluno)
-        print(lista_notas)
+        print('Aluno:', aluno)
+        print('Notas:', lista_notas)
+        media = lambda notas: sum([int(i) for i in notas]) / 4
+        print('Nota final:', media(lista_notas))
+        lista_media.append({aluno: media(lista_notas)})
+    return lista_media
 
 if __name__ == '__main__':
-   media_notas('notas.txt')
+    lista_media = media_notas('notas.txt')
+    print(lista_media)
+   # media_notas('notas.txt')
    # escrever_arquivo('Primeira linha\n')
    # aluno = 'Rafael,10,2,4,5\n'
    # atualizar_arquivo('notas.txt', aluno)
