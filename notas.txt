@@ -1,1 +1,4 @@
-banana
+Rafael,10,2,4,5
+Kaido,6,4,2,10
+Lucas,2,5,2,4
+Siria,4,3,10,10
