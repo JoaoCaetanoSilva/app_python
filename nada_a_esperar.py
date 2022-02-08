@@ -37,11 +37,12 @@ if modificar == 1:
 #/
 x = len(lista1)
 y = 0
-while y < x:
-    y += 1
+def contagem(y, x):
+    while y < x:
+        y += 1
 
 for z in lista1:
-    endereco = input('Endereco de ' + lista1[y] + ': ')
+    endereco = input('Endereco de ' + lista1[contagem(y,x)] + ': ') * x
 
 lista2 = []
 lista2.append(endereco)
