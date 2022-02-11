@@ -40,28 +40,38 @@ for z in lista1:
     endereco = input('Endereco de ' + lista1[x] + ': ')
     x += 1
 
+arquivo1 = open('endereco.txt', 'r')
+arquivo1.read()
+arquivo1.close()
+
 lista2 = []
-lista2.append(endereco)
-lista2 = (endereco).split()
+lista2.append(arquivo1)
+lista2 = (arquivo1).split()
 
-mudar2 = int(input('Deseja adicionar o endereco de um novo cliente, exclui-lo ou altera-lo? Se sua resposta for sim. DIGITE 1. Se nao DIGITE 2: '))
-if mudar2 == 1:
-    confirmado2 = int(input('Para adicionar o endereco de um novo cliente digite: 2 \nPara excluir o endereco do cliente digite: 3 \nPara altera-lo digite: 4: \nOpção: '))
+modificar = int(input('Deseja adicionar o endereco de um novo cliente, exclui-lo ou altera-lo? Se sua resposta for sim. DIGITE 1. Se nao DIGITE 2: '))
+if modificar == 1:
+    confirmado = int(input('Para adicionar o endereco de um novo cliente digite: 2 \nPara excluir o endereco do cliente digite: 3 \nPara altera-lo digite: 4: \nOpção: '))
 
-    if confirmado2 == 2:
-        adicionar2 = input('Endereco do novo cliente: ')
-        lista2.append(adicionar2)
-        print(lista2)
+    if confirmado == 2:
+        adicionar1 = input('Endereco do novo cliente: ')
+        arquivo = open('endereco.txt', 'a')
+        arquivo.write(' ' + adicionar1)
+        arquivo.close()
 
-    if confirmado2 == 3:
-        excluir2 = input('Endereco que deseja excluir: ')
-        lista2.remove(excluir2)
-        print(lista2)
+    if confirmado == 3:
+        excluir1 = input('Endereco que deseja excluir: ')
+        lista2.remove(excluir1)
+        separar1 = ' '.join(lista1)
+        arquivo = open('endereco.txt', 'w')
+        arquivo.write(separar1)
+        arquivo.close()
 
-    if confirmado2 == 4:
-        alterar2 = input('Endereco que deseja alterar: ')
-        novo2 = input('Novo endereco: ')
+    if confirmado == 4:
+        alterar1 = input('Endereco que deseja alterar: ')
+        novo1 = input('Novo endereco: ')
         for index, palavra in enumerate(lista2):
-            if palavra == alterar2:
-                lista2[index] = novo2
-        print(lista2)
+            if palavra == alterar1:
+                lista2[index] = novo1
+        separar2 = ' '.join(lista1)
+        arquivo = open('endereco.txt', 'w')
+        arquivo.write(separar2)
