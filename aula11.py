@@ -1,12 +1,13 @@
 lista = [1, 10]
 
+arquivo = open('teste.txt', 'r')
 try:
-    arquivo = open('teste.txt', 'r')
     texto = arquivo.read()
     divisao = 10 / 2
     numero = lista[1]
     a = 0
     x = a
+    arquivo.close()
 except ZeroDivisionError:
     print('Não é possivel dividir por 0')
 except ArithmeticError:
@@ -21,5 +22,6 @@ else:
     print('Executa se nao tiver excecoes no codigo')
 finally:
     print('Sempre executara')
+    print('Fechando arquivo')
     arquivo.close()
 
