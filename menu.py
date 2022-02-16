@@ -1,18 +1,19 @@
-def lista_cliente(nome):
+def listar_cliente():
     arquivo = open('cliente.txt', 'r')
     lista1 = []
     lista1.append(arquivo)
     lista1 = arquivo.split()
     arquivo.close()
+    return lista1
 
-def lista_endereco(endereco):
+def listar_endereco(endereco):
     arquivo = open('endereco.txt', 'r')
     lista2 = []
     lista2.append(arquivo)
     lista2 = arquivo.split()
     arquivo.close()
 
-def lista_codigo(codigo):
+def listar_codigo(codigo):
     arquivo = open('codigo.txt', 'r')
     lista3 = []
     lista3.append(arquivo)
@@ -53,11 +54,8 @@ def incluir_codigo():
 #/
 
 def consultar_cliente(texto):
-    __import__(lista_cliente)
-    __import__(lista_endereco)
-    __import__(lista_codigo)
     x = 0
-    for z in lista1, lista2, lista3:
+    for z in lista_de_clientes, lista2, lista3:
         print('Cliente: ' + lista1[x] + ', endereco:' + lista2[x] + ', codigo: ' + lista3[x])
         x += 1
 
@@ -66,7 +64,7 @@ def consultar_cliente(texto):
 def alterar_cliente(nome, lista1):
     alterar = input('Nome que deseja alterar: ')
     novo = input('Novo nome: ')
-    __import__(lista_cliente)
+
     for index, palavra in enumerate(lista1):
         if palavra == alterar:
             lista1[index] = novo
@@ -76,7 +74,7 @@ def alterar_cliente(nome, lista1):
 
 def excluir_cliente(nome, lista1):
     excluir = input('Nome que deseja excluir: ')
-    __import__(lista_cliente)
+
     lista1.remove(excluir)
     separar = ' '.join(lista1)
     arquivo = open('cliente.txt', 'a')
@@ -84,6 +82,7 @@ def excluir_cliente(nome, lista1):
     arquivo.close()
 
 if __name__ == '__main__':
+    lista_de_clientes = listar_cliente()
     opcao = 1
     while opcao != 5:
         print('1 - Incluir')
