@@ -6,7 +6,7 @@ velocidade = 10
 
 fundo = pygame.image.load('tela.png')
 carro = pygame.image.load('carro.png')
-janela = pygame.display.set_mode((605, 500))
+janela = pygame.display.set_mode((604, 500))
 pygame.display.set_caption('Criando um jogo em python')
 
 janela_aberta = True
@@ -27,8 +27,10 @@ while janela_aberta:
         x += velocidade
 
     # janela.fill((0, 0, 0)) #Mudar para a cor preta automatico quando se mover o objeto.
+    # pygame.draw.circle(janela, (0, 255, 0), (x, y), 25) ::::: # Cor, posicao de inicio e tamanho do objeto.
     janela.blit(fundo, (0, 0))
-    pygame.draw.circle(janela, (0, 255, 0), (x, y), 50) # Cor, posicao de inicio e tamanho do objeto.
+    janela.blit(carro, (x, y))
+
     pygame.display.update()
 
 pygame.quit()
