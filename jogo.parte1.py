@@ -1,11 +1,35 @@
 import pygame
+from random import randint
 pygame.init()
-x = 400
-y = 300
+
+principal_x = 280
+principal_y = 200
+
+policia_x = 280
+policia_y = 1000
+
+vermelho_x = 180
+vermelho_y = 800
+
+mesclado_x = 380
+mesclado_y = 800
+
 velocidade = 10
+velocidade_policia = 14
+velocidade_vermelho = 10
+velocidade_misto = 8
 
 fundo = pygame.image.load('tela.png')
 carro = pygame.image.load('carro.png')
+carro2 = pygame.image.load('carro2.png')
+carro3 = pygame.image.load('carro3.png')
+policia = pygame.image.load('policia.png')
+
+fonte = pygame.font.SysFont('arial black', 20)
+texto = fonte.render('Tempo: ', True, (255, 255, 255), (0, 0, 0))
+pos_texto = texto.get_rect()
+pos_texto = (10, 10)
+
 janela = pygame.display.set_mode((604, 500))
 pygame.display.set_caption('Criando um jogo em python')
 
@@ -17,20 +41,32 @@ while janela_aberta:
             janela_aberta = False
         comandos = pygame.key.get_pressed() #Se pressionado uma tecla fazer...
 
-    if comandos[pygame.K_UP]:
-        y -= velocidade
     if comandos[pygame.K_DOWN]:
-        y += velocidade
-    if comandos[pygame.K_LEFT]:
-        x -= velocidade
-    if comandos[pygame.K_RIGHT]:
-        x += velocidade
+        principal_y += velocidade - 2
+    if comandos[pygame.K_UP]:
+        principal_y -= velocidade
+    if comandos[pygame.K_RIGHT] and principal_x <= 395:
+        principal_x += velocidade
+    if comandos[pygame.K_LEFT] and principal_x >= 171:
+        principal_x -= velocidade
+
+    if (policia_y <= -200) and (vermelho_y <= -200) and (mesclado_y <= -200): #500 Se não quiser aleatorio.
+        policia_y = randint(600, 1200)
+        vermelho_y = randint(600, 850)
+        mesclado_y = randint(600, 800)
+
+    policia_y -= velocidade_policia
+    vermelho_y -= velocidade_vermelho
+    mesclado_y -= velocidade_misto
 
     # janela.fill((0, 0, 0)) #Mudar para a cor preta automatico quando se mover o objeto.
     # pygame.draw.circle(janela, (0, 255, 0), (x, y), 25) ::::: # Cor, posicao de inicio e tamanho do objeto.
     janela.blit(fundo, (0, 0))
-    janela.blit(carro, (x, y))
-
+    janela.blit(carro, (principal_x, principal_y))
+    janela.blit(carro2, (vermelho_x, vermelho_y))
+    janela.blit(carro3, (mesclado_x, mesclado_y))
+    janela.blit(policia, (policia_x, policia_y))
+    janela.blit(texto, pos_texto)
     pygame.display.update()
 
 pygame.quit()
