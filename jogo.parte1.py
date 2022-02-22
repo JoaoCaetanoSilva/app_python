@@ -14,6 +14,9 @@ vermelho_y = 800
 mesclado_x = 380
 mesclado_y = 800
 
+time = 0
+time_segundo = 0
+
 velocidade = 10
 velocidade_policia = 14
 velocidade_vermelho = 10
@@ -25,35 +28,53 @@ carro2 = pygame.image.load('carro2.png')
 carro3 = pygame.image.load('carro3.png')
 policia = pygame.image.load('policia.png')
 
-fonte = pygame.font.SysFont('arial black', 20)
-texto = fonte.render('Tempo: ', True, (255, 255, 255), (0, 0, 0))
-pos_texto = texto.get_rect()
-pos_texto = (10, 10)
+fonte = pygame.font.SysFont('arial black', 20) # If 'True' printará a mensagem dentro de uma caixa de texto.
+texto = fonte.render(' Tempo: ', True, (255, 255, 255), (0, 0, 0)) # 255 cor da Letra. 0 cor do fundo.
+posicao = texto.get_rect()
+posicao.center = (55, 25)
 
 janela = pygame.display.set_mode((604, 500))
 pygame.display.set_caption('Criando um jogo em python')
 
 janela_aberta = True
 while janela_aberta:
-    pygame.time.delay(50)
+    pygame.time.delay(50) # Delay para continuar aberto o game... Tambem indica a velocidade de jogo.
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             janela_aberta = False
         comandos = pygame.key.get_pressed() #Se pressionado uma tecla fazer...
 
-    if comandos[pygame.K_DOWN]:
-        principal_y += velocidade - 2
-    if comandos[pygame.K_UP]:
-        principal_y -= velocidade
+    # if comandos[pygame.K_DOWN] and principal_y <= 410:
+    #     principal_y += velocidade - 2
+    # if comandos[pygame.K_UP] and principal_y >= 30:
+    #     principal_y -= velocidade
     if comandos[pygame.K_RIGHT] and principal_x <= 395:
         principal_x += velocidade
     if comandos[pygame.K_LEFT] and principal_x >= 171:
         principal_x -= velocidade
+# Detecta colisao.
 
-    if (policia_y <= -200) and (vermelho_y <= -200) and (mesclado_y <= -200): #500 Se não quiser aleatorio.
+    if ((principal_x + 30 > mesclado_x and principal_y + 90 > mesclado_y)):
+        principal_y = 1200 # Colisao lado direito.
+
+    if ((principal_x - 45 < vermelho_x and principal_y + 90 > vermelho_y)):
+        principal_y = 1200  # Colisao lado esquerdo.
+
+    if (policia_y <= -200):
         policia_y = randint(600, 1200)
+
+    if (vermelho_y <= -200):
         vermelho_y = randint(600, 850)
+
+    if (mesclado_y <= -200):
         mesclado_y = randint(600, 800)
+
+    if time < 20:
+        time += 1
+    else:
+        time_segundo += 1
+        texto = fonte.render(' Tempo: ' + str(time_segundo), True, (255, 255, 255), (0, 0, 0))  # 255 cor da Letra. 0 cor do fundo.
+        time = 0
 
     policia_y -= velocidade_policia
     vermelho_y -= velocidade_vermelho
@@ -66,7 +87,7 @@ while janela_aberta:
     janela.blit(carro2, (vermelho_x, vermelho_y))
     janela.blit(carro3, (mesclado_x, mesclado_y))
     janela.blit(policia, (policia_x, policia_y))
-    janela.blit(texto, pos_texto)
+    janela.blit(texto, posicao)
     pygame.display.update()
 
 pygame.quit()
