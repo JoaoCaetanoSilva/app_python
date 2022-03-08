@@ -44,24 +44,35 @@ while janela_aberta:
             janela_aberta = False
         comandos = pygame.key.get_pressed() #Se pressionado uma tecla fazer...
 
-    # if comandos[pygame.K_DOWN] and principal_y <= 410:
-    #     principal_y += velocidade - 2
-    # if comandos[pygame.K_UP] and principal_y >= 30:
-    #     principal_y -= velocidade
+    if comandos[pygame.K_DOWN] and principal_y <= 410:
+        principal_y += velocidade - 2
+    if comandos[pygame.K_UP] and principal_y >= 30:
+        principal_y -= velocidade
     if comandos[pygame.K_RIGHT] and principal_x <= 395:
         principal_x += velocidade
     if comandos[pygame.K_LEFT] and principal_x >= 171:
         principal_x -= velocidade
-# Detecta colisao.
+    if comandos[pygame.K_BACKSPACE]:
+        # is_paused
 
-    if ((principal_x + 30 > mesclado_x and principal_y + 90 > mesclado_y)):
-        principal_y = 1200  # Colisao lado direito.
+    # Detecta colisao.
+    if ((principal_x - 30 < vermelho_x and principal_y + 90 > vermelho_y)) and ((principal_y - 75 < vermelho_y)): # Colisao lado esquerdo.
+        fonte = pygame.font.SysFont('arial black', 20)  # If 'True' printará a mensagem dentro de uma caixa de texto.
+        texto = fonte.render(' Fim de jogo ', True, (255, 255, 255), (0, 0, 0))  # 255 cor da Letra. 0 cor do fundo.
+        posicao = texto.get_rect()
+        posicao.center = (300, 200)  # X e Y
 
-    if ((principal_x - 30 < vermelho_x and principal_y + 90 > vermelho_y)):
-        principal_y = 1200  # Colisao lado esquerdo.
+    if ((principal_x + 30 > policia_x and principal_y + 90 > policia_y)) and ((principal_x - 30 < policia_x and principal_y + 90 > policia_y)) and ((principal_y - 75 < policia_y)): # Colisao no meio.
+        fonte = pygame.font.SysFont('arial black', 20)  # If 'True' printará a mensagem dentro de uma caixa de texto.
+        texto = fonte.render(' Fim de jogo ', True, (255, 255, 255), (0, 0, 0))  # 255 cor da Letra. 0 cor do fundo.
+        posicao = texto.get_rect()
+        posicao.center = (300, 200)  # X e Y
 
-    if ((principal_x + 20 > policia_x and principal_y + 90 > policia_y) or (principal_x - 20 < policia_x and principal_y + 90 > policia_y)):
-        principal_y = 1200  # Colisao no meio.
+    if ((principal_x + 30 > mesclado_x and principal_y + 90 > mesclado_y)) and ((principal_y - 75 < mesclado_y)): # Colisao lado direito.
+        fonte = pygame.font.SysFont('arial black', 20)  # If 'True' printará a mensagem dentro de uma caixa de texto.
+        texto = fonte.render(' Fim de jogo ', True, (255, 255, 255), (0, 0, 0))  # 255 cor da Letra. 0 cor do fundo.
+        posicao = texto.get_rect()
+        posicao.center = (300, 200)  # X e Y
 
     if (policia_y <= -200):
         policia_y = randint(600, 1200)
