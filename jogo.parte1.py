@@ -6,7 +6,7 @@ principal_x = 280
 principal_y = 200
 
 policia_x = 280
-policia_y = 1000
+policia_y = 800
 
 vermelho_x = 180
 vermelho_y = 800
@@ -19,7 +19,7 @@ time_segundo = 0
 
 velocidade = 10
 velocidade_policia = 14
-velocidade_vermelho = 10
+velocidade_vermelho = 5
 velocidade_misto = 8
 
 fundo = pygame.image.load('tela.png')
@@ -55,10 +55,13 @@ while janela_aberta:
 # Detecta colisao.
 
     if ((principal_x + 30 > mesclado_x and principal_y + 90 > mesclado_y)):
-        principal_y = 1200 # Colisao lado direito.
+        principal_y = 1200  # Colisao lado direito.
 
-    if ((principal_x - 45 < vermelho_x and principal_y + 90 > vermelho_y)):
+    if ((principal_x - 30 < vermelho_x and principal_y + 90 > vermelho_y)):
         principal_y = 1200  # Colisao lado esquerdo.
+
+    if ((principal_x + 20 > policia_x and principal_y + 90 > policia_y) or (principal_x - 20 < policia_x and principal_y + 90 > policia_y)):
+        principal_y = 1200  # Colisao no meio.
 
     if (policia_y <= -200):
         policia_y = randint(600, 1200)
