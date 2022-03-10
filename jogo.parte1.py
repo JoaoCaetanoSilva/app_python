@@ -17,6 +17,9 @@ mesclado_y = 800
 time = 0
 time_segundo = 0
 
+rodando = 0
+pausado = 1
+
 velocidade = 10
 velocidade_policia = 14
 velocidade_vermelho = 5
@@ -28,13 +31,15 @@ carro2 = pygame.image.load('carro2.png')
 carro3 = pygame.image.load('carro3.png')
 policia = pygame.image.load('policia.png')
 
-fonte = pygame.font.SysFont('arial black', 20) # If 'True' printará a mensagem dentro de uma caixa de texto.
-texto = fonte.render(' Tempo: ', True, (255, 255, 255), (0, 0, 0)) # 255 cor da Letra. 0 cor do fundo.
+fonte = pygame.font.SysFont('arial black', 20)  # If 'True' printará a mensagem dentro de uma caixa de texto.
+texto = fonte.render(' Tempo: ', True, (255, 255, 255), (0, 0, 0))  # 255 cor da Letra. 0 cor do fundo.
 posicao = texto.get_rect()
 posicao.center = (55, 25)
 
 janela = pygame.display.set_mode((604, 500))
 pygame.display.set_caption('Criando um jogo em python')
+
+jogo = rodando
 
 janela_aberta = True
 while janela_aberta:
@@ -52,27 +57,65 @@ while janela_aberta:
         principal_x += velocidade
     if comandos[pygame.K_LEFT] and principal_x >= 171:
         principal_x -= velocidade
-    if comandos[pygame.K_BACKSPACE]:
-        # is_paused
+    if comandos[pygame.K_RETURN]:  # Tecla enter.
+        if jogo != pausado:
+            fonte = pygame.font.SysFont('arial black', 20)  # If 'True' printará a mensagem dentro de uma caixa de texto.
+            texto = fonte.render(' pausado ', True, (255, 255, 255), (0, 0, 0))  # 255 cor da Letra. 0 cor do fundo.
+            posicao = texto.get_rect()
+            posicao.center = (300, 200)
+            jogo = pausado
+        else:
+            jogo = rodando
+
+    if jogo == pausado:
+        pygame.display.flip()
+        continue
 
     # Detecta colisao.
     if ((principal_x - 30 < vermelho_x and principal_y + 90 > vermelho_y)) and ((principal_y - 75 < vermelho_y)): # Colisao lado esquerdo.
-        fonte = pygame.font.SysFont('arial black', 20)  # If 'True' printará a mensagem dentro de uma caixa de texto.
-        texto = fonte.render(' Fim de jogo ', True, (255, 255, 255), (0, 0, 0))  # 255 cor da Letra. 0 cor do fundo.
-        posicao = texto.get_rect()
-        posicao.center = (300, 200)  # X e Y
+
+        if jogo != pausado:
+            fonte = pygame.font.SysFont('arial black', 20)  # If 'True' printará a mensagem dentro de uma caixa de texto.
+            texto = fonte.render(' game over ', True, (255, 255, 255), (0, 0, 0))  # 255 cor da Letra. 0 cor do fundo.
+            posicao = texto.get_rect()
+            posicao.center = (300, 200)
+            jogo = pausado
+        else:
+            jogo = rodando
+
+        if jogo == pausado:
+            pygame.display.flip()
+            continue
 
     if ((principal_x + 30 > policia_x and principal_y + 90 > policia_y)) and ((principal_x - 30 < policia_x and principal_y + 90 > policia_y)) and ((principal_y - 75 < policia_y)): # Colisao no meio.
-        fonte = pygame.font.SysFont('arial black', 20)  # If 'True' printará a mensagem dentro de uma caixa de texto.
-        texto = fonte.render(' Fim de jogo ', True, (255, 255, 255), (0, 0, 0))  # 255 cor da Letra. 0 cor do fundo.
-        posicao = texto.get_rect()
-        posicao.center = (300, 200)  # X e Y
+
+        if jogo != pausado:
+            fonte = pygame.font.SysFont('arial black', 20)  # If 'True' printará a mensagem dentro de uma caixa de texto.
+            texto = fonte.render(' game over ', True, (255, 255, 255), (0, 0, 0))  # 255 cor da Letra. 0 cor do fundo.
+            posicao = texto.get_rect()
+            posicao.center = (300, 200)
+            jogo = pausado
+        else:
+            jogo = rodando
+
+        if jogo == pausado:
+            pygame.display.flip()
+            continue
 
     if ((principal_x + 30 > mesclado_x and principal_y + 90 > mesclado_y)) and ((principal_y - 75 < mesclado_y)): # Colisao lado direito.
-        fonte = pygame.font.SysFont('arial black', 20)  # If 'True' printará a mensagem dentro de uma caixa de texto.
-        texto = fonte.render(' Fim de jogo ', True, (255, 255, 255), (0, 0, 0))  # 255 cor da Letra. 0 cor do fundo.
-        posicao = texto.get_rect()
-        posicao.center = (300, 200)  # X e Y
+
+        if jogo != pausado:
+            fonte = pygame.font.SysFont('arial black', 20)  # If 'True' printará a mensagem dentro de uma caixa de texto.
+            texto = fonte.render(' game over ', True, (255, 255, 255), (0, 0, 0))  # 255 cor da Letra. 0 cor do fundo.
+            posicao = texto.get_rect()
+            posicao.center = (300, 200)
+            jogo = pausado
+        else:
+            jogo = rodando
+
+        if jogo == pausado:
+            pygame.display.flip()
+            continue
 
     if (policia_y <= -200):
         policia_y = randint(600, 1200)
@@ -102,6 +145,7 @@ while janela_aberta:
     janela.blit(carro3, (mesclado_x, mesclado_y))
     janela.blit(policia, (policia_x, policia_y))
     janela.blit(texto, posicao)
+
     pygame.display.update()
 
 pygame.quit()
