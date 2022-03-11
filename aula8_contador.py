@@ -6,7 +6,7 @@ def contador_letras(lista):
     return contador
 
 if __name__ == '__main__':
-    lista = ['']
+    lista = ['s s']
     print(contador_letras(lista))
     # s = sum(contador_letras(lista))
     # print(s)

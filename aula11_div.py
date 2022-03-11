@@ -10,6 +10,7 @@ while True:
         x = int(input('Digite a nota: '))
         print(x)
         if x > 10:
+            print('Nota muito alta.')
             raise InputError('A nota nao pode ser maior que 10')
         elif x < 1:
             print('Nota muito baixa.')
