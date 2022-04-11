@@ -11,7 +11,7 @@ resultado = 'soma: {} \nsubtracao: {} \nmultiplicacao: {} \ndivisao: {} \nresto:
 .format(soma, subtracao, multiplicacao, divisao, resto)
 
 print (resultado)
-print ('Final do programa')
+print ('Final do programa.')
 
 
 
