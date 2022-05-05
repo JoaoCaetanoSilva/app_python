@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from 
+from agenda.core.views import lista_eventos
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('agenda/', )
+    path('agenda/', views.lista_eventos)
 ]
